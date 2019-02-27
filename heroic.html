@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<head>
+<script src="/assets/jquery.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Thasadith" rel="stylesheet">
+<style>
+body {
+  margin: 0 auto;
+  max-width: 600px;
+  background: #6c8dc1;
+}
+div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: 'Covered By Your Grace', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: #050505;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: #224377;
+  margin: 0px 0 70px 0;
+}
+p {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #4f6282;
+  background: black;
+  background: linear-gradient(bottom, rgb(255, 255, 255), rgba (0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgb(255, 255, 255), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgb(255, 255, 255), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 20px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+  font-family: 'Thasadith', sans-serif;;
+  font-size: 20
+}
+ul {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  }
+li {
+  display: inline;
+  padding: 0px 10px 0px 10px;
+  }
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 23px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<ul>
+<li><button onclick=Pasta()>Pasta</button></li>
+<li><button onclick=Beverages()>Beverages</button></li>
+<li><button onclick=Desserts()>Desserts</button></li>
+</ul>
+
+<h1>ian's food & drinks menu</h1>
+<h2>covering all your cravings</h2>
+<div id="synonymous">
+
+
+<script>
+PastaImages = [
+  'url("https://images-gmi-pmc.edge-generalmills.com/7295fedf-6474-4134-aafd-15e914d0d624.jpg")',
+	'url("https://images-gmi-pmc.edge-generalmills.com/7485018f-71f9-44ad-9a28-04fd44cab253.jpg")',
+	'url("http://www.dailyunadventuresincooking.com/wp-content/uploads/2013/09/Chicken-Cacciatore-1.jpg")',
+]
+BeveragesImages = [
+  'url("http://images.media-allrecipes.com/userphotos/960x960/4469062.jpg")',
+	'url("https://cdn.vox-cdn.com/thumbor/XhE3IYApaaom476JCACvHWkfhPE=/0x0:1000x833/1200x800/filters:focal(420x337:580x497)/cdn.vox-cdn.com/uploads/chorus_image/image/62220779/shutterstock_225147871.0.0.jpg")',
+	'url("https://img.grouponcdn.com/deal/2hqF4zf23Tcj5jZjkX7Q/TQ-700x420/v1/c700x420.jpg")',
+]
+DessertsImages = [
+  'url("https://img.taste.com.au/0SSWJSO1/taste/2017/08/mini-no-bake-cheesecakes-with-strawberries-1980x1320-129763-1.jpg")',
+	'url("https://www.99restaurants.com/media/2164/chocochipcookieskillet_640x480.jpg")',
+	'url("https://cdn-image.foodandwine.com/sites/default/files/HD-200912-r-raspberry-macarons.jpg")',
+]
+
+PastaDivs = [
+  '<div class="item"><p>Marinera sauce pasta<span class="price">$15</span><br /><small>Delicious pasta served with fresh marinera and crunchy toast. </small></p></div>',
+			'<div class="item"><p>Alfredo sauce pasta <span class="price">$15</span><br /><small>Pasta baked with chicken and a smooth alfredo sauce. </small></p></div>',
+			'<div class="item"><p>Farfalle pasta <span class="price">$15</span><br /><small>Pasta with fresh vegetables and chicken</small></p></div>',
+			]
+BeveragesDivs = [
+  '<div class="item"><p>Smoothies/Milkshakes <span class="price">$5</span><br /><small>Smoothies and milkshakes that are both colorful and yummy </small></p></div>',
+			'<div class="item"><p>Sodas <span class="price">$1</span><br /><small>Bubbly refreshing sodas </small></p></div>',
+			'<div class="item"><p>Wine <span class="price">$8</span><br /><small>We serve white and red wine for any occasion, if you have any specific wine brand, please suggest it so it could be brought to your table.</small></p></div>',
+			]
+DessertsDivs = [
+  '<div class="item"><p>Strawberry mini creampie <span class="price">$5</span><br /><small>This mini creampie is filled with delicious fresh strawberry cream, and a strawberry to sweeten your day! </small></p></div>',
+			'<div class="item"><p>Cookie melt with ice cream <span class="price">$7</span><br /><small>Cookie melt served with freshly made ice cream, the ice cream flavor is up to you.</small></p></div>',
+			'<div class="item"><p>Macaroons <span class="price">$.50 each</span><br /><small>Baked macaroons straight from the oven. We have a variety of different delicious flavors.</small></p></div>',
+  ]
+
+
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+  function Pasta() {
+  heroic = document.getElementById("synonymous")
+  heroic.innerHTML= ''
+	heroic.innerHTML += PastaDivs[0]
+	heroic.innerHTML += PastaDivs[1]
+	heroic.innerHTML += PastaDivs[2]
+	items = document.getElementsByClassName("item")
+  for (i=0; i<3; i=i+1) {
+    items[i].style.background = PastaImages[i]  
+    items[i].style.backgroundSize = '100% 100%'
+  }
+}
+  function Beverages() {
+    heroic = document.getElementById("synonymous")
+    heroic.innerHTML= ''
+    heroic.innerHTML += BeveragesDivs[0]
+    heroic.innerHTML += BeveragesDivs[1]
+    heroic.innerHTML += BeveragesDivs[2]
+    items = document.getElementsByClassName("item")
+    for (i=0; i<3; i=i+1) {
+     items[i].style.background = BeveragesImages[i] 
+     items[i].style.backgroundSize = '100% 100%'
+  }
+}
+
+function Desserts() {
+    heroic = document.getElementById("synonymous")
+    heroic.innerHTML= ''
+    heroic.innerHTML += DessertsDivs[0]
+    heroic.innerHTML += DessertsDivs[1]
+    heroic.innerHTML += DessertsDivs[2]
+    items = document.getElementsByClassName("item")
+    for (i=0; i<3; i=i+1) {
+      items[i].style.background = DessertsImages[i]
+      items[i].style.backgroundSize = '100% 100%'
+    }
+}
+</script>
+
+</body>
