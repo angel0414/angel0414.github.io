@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/assets/jquery.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -48,7 +49,6 @@ p {
   -webkit-transition: height .5s;
   -moz-transition: height .5s;
 }
-
 small {
   opacity: 0;
   font-family: 'Thasadith', sans-serif;;
@@ -63,15 +63,12 @@ li {
   display: inline;
   padding: 0px 10px 0px 10px;
   }
-
 .show-description p {
   height: 150px;
 }
-
 .show-description small {
   opacity: 1;
 }
-
 .price {
   float: right;
 }
@@ -96,7 +93,6 @@ li {
     font-size: 16px;
   }
 }
-
 </style>
 
 </head>
@@ -106,6 +102,7 @@ li {
 <li><button onclick=Pasta()>Pasta</button></li>
 <li><button onclick=Beverages()>Beverages</button></li>
 <li><button onclick=Desserts()>Desserts</button></li>
+<li><button onclick=Burgers()>Burgers</button></li>
 </ul>
 
 <h1>ian's food & drinks menu</h1>
@@ -115,49 +112,63 @@ li {
 
 <script>
 PastaImages = [
-  'url("https://images-gmi-pmc.edge-generalmills.com/7295fedf-6474-4134-aafd-15e914d0d624.jpg")',
+	'url("https://images-gmi-pmc.edge-generalmills.com/7295fedf-6474-4134-aafd-15e914d0d624.jpg")',
 	'url("https://images-gmi-pmc.edge-generalmills.com/7485018f-71f9-44ad-9a28-04fd44cab253.jpg")',
 	'url("http://www.dailyunadventuresincooking.com/wp-content/uploads/2013/09/Chicken-Cacciatore-1.jpg")',
+	'url("https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/4/5/0/FNM_050113-Skillet-Ravioli-Recipe_s4x3.jpg.rend.hgtvcom.826.620.suffix/1371615625342.jpeg")',
 ]
 BeveragesImages = [
-  'url("http://images.media-allrecipes.com/userphotos/960x960/4469062.jpg")',
+	'url("http://images.media-allrecipes.com/userphotos/960x960/4469062.jpg")',
 	'url("https://cdn.vox-cdn.com/thumbor/XhE3IYApaaom476JCACvHWkfhPE=/0x0:1000x833/1200x800/filters:focal(420x337:580x497)/cdn.vox-cdn.com/uploads/chorus_image/image/62220779/shutterstock_225147871.0.0.jpg")',
 	'url("https://img.grouponcdn.com/deal/2hqF4zf23Tcj5jZjkX7Q/TQ-700x420/v1/c700x420.jpg")',
+	'url("https://afewofmyfavorites.com/wp-content/uploads/2018/06/Distinct-Review-on-Types-of-Water.jpg")',
+	'url("https://cdn-image.foodandwine.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/1519745251/craft-beer-bar-list-great-lost-bear-beer-FT-BLOG0218.jpg?itok=dkOmB7m2")',
 ]
 DessertsImages = [
-  'url("https://img.taste.com.au/0SSWJSO1/taste/2017/08/mini-no-bake-cheesecakes-with-strawberries-1980x1320-129763-1.jpg")',
+	'url("https://img.taste.com.au/0SSWJSO1/taste/2017/08/mini-no-bake-cheesecakes-with-strawberries-1980x1320-129763-1.jpg")',
 	'url("https://www.99restaurants.com/media/2164/chocochipcookieskillet_640x480.jpg")',
 	'url("https://cdn-image.foodandwine.com/sites/default/files/HD-200912-r-raspberry-macarons.jpg")',
 ]
-
+BurgersImages = [
+	'url("http://www.gorare.com/wp-content/uploads/2016/05/classic_burger_Twitter.png")',
+	'url("https://fullerssugarhouse.com/wp/wp-content/uploads/maple-bacon-burger-t.jpg")',
+	'url("https://howtofeedaloon.com/wp-content/uploads/2016/06/veggie-burger-gawker-2.jpg")',
+	
+]
 PastaDivs = [
-  '<div class="item"><p>Marinera sauce pasta<span class="price">$15</span><br /><small>Delicious pasta served with fresh marinera and crunchy toast. </small></p></div>',
-			'<div class="item"><p>Alfredo sauce pasta <span class="price">$15</span><br /><small>Pasta baked with chicken and a smooth alfredo sauce. </small></p></div>',
-			'<div class="item"><p>Farfalle pasta <span class="price">$15</span><br /><small>Pasta with fresh vegetables and chicken</small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Marinera sauce pasta<span class="price">$15</span><br /><small>Delicious pasta served with fresh marinera and crunchy toast. </small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Alfredo sauce pasta <span class="price">$15</span><br /><small>Pasta baked with chicken and a smooth alfredo sauce. </small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Farfalle pasta <span class="price">$15</span><br /><small>Pasta with fresh vegetables and chicken</small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Ravioli <span class="price">$15</span><br /><small>Ravioli pasta filled with cheese and bathed in alfredo or marinera sauce</small></p></div>',
 			]
 BeveragesDivs = [
-  '<div class="item"><p>Smoothies/Milkshakes <span class="price">$5</span><br /><small>Smoothies and milkshakes that are both colorful and yummy </small></p></div>',
-			'<div class="item"><p>Sodas <span class="price">$1</span><br /><small>Bubbly refreshing sodas </small></p></div>',
-			'<div class="item"><p>Wine <span class="price">$8</span><br /><small>We serve white and red wine for any occasion, if you have any specific wine brand, please suggest it so it could be brought to your table.</small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Smoothies/Milkshakes <span class="price">$5</span><br /><small>Smoothies and milkshakes that are both colorful and yummy </small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Sodas <span class="price">$1</span><br /><small>Bubbly refreshing sodas </small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Wine <span class="price">$8</span><br /><small>We serve white and red wine for any occasion, if you have any specific wine brand, please suggest it so it could be brought to your table.</small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Waters <span class="price">$0.25</span><br /><small>If dehydrated we serve cold water of a preferable brand. </small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Craft beers <span class="price">$3.50</span><br /><small>Beers freshly served, remember, you must have ID with you. </small></p></div>',
 			]
 DessertsDivs = [
-  '<div class="item"><p>Strawberry mini creampie <span class="price">$5</span><br /><small>This mini creampie is filled with delicious fresh strawberry cream, and a strawberry to sweeten your day! </small></p></div>',
-			'<div class="item"><p>Cookie melt with ice cream <span class="price">$7</span><br /><small>Cookie melt served with freshly made ice cream, the ice cream flavor is up to you.</small></p></div>',
-			'<div class="item"><p>Macaroons <span class="price">$.50 each</span><br /><small>Baked macaroons straight from the oven. We have a variety of different delicious flavors.</small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Strawberry mini creampie <span class="price">$5</span><br /><small>This mini creampie is filled with delicious fresh strawberry cream, and a strawberry to sweeten your day! </small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Cookie melt with ice cream <span class="price">$7</span><br /><small>Cookie melt served with freshly made ice cream, the ice cream flavor is up to you.</small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Macaroons <span class="price">$.50 each</span><br /><small>Baked macaroons straight from the oven. We have a variety of different delicious flavors.</small></p></div>',
   ]
-
-
-  $('div').on('click', function() {
-      $(this).toggleClass('show-description');
-  });
-  function Pasta() {
-  heroic = document.getElementById("synonymous")
-  heroic.innerHTML= ''
+BurgersDivs = [
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Cheeseburger <span class="price">$4.78</span><br /><small>This burger will be served with fresh cooked meat and to top it off a variety of cheeses melted over the meat </small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Bacon burger <span class="price">$4.78</span><br /><small>This burger is like any other with vegetables, cheese, but it has something others dont, crispy bacon!</small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Veggie burger <span class="price">$4.78</span><br /><small>We serve the yummiest veggie burger in the world! Vegetarians can enjoy meats too!</small></p></div>',
+	
+]
+ 
+ function Pasta() {
+	heroic = document.getElementById("synonymous")
+	heroic.innerHTML= ''
 	heroic.innerHTML += PastaDivs[0]
 	heroic.innerHTML += PastaDivs[1]
 	heroic.innerHTML += PastaDivs[2]
+	heroic.innerHTML += PastaDivs[3]
 	items = document.getElementsByClassName("item")
-  for (i=0; i<3; i=i+1) {
+	for (i=0; i<4; i=i+1) {
     items[i].style.background = PastaImages[i]  
     items[i].style.backgroundSize = '100% 100%'
   }
@@ -168,13 +179,14 @@ DessertsDivs = [
     heroic.innerHTML += BeveragesDivs[0]
     heroic.innerHTML += BeveragesDivs[1]
     heroic.innerHTML += BeveragesDivs[2]
+	heroic.innerHTML += BeveragesDivs[3]
+	heroic.innerHTML += BeveragesDivs[4]
     items = document.getElementsByClassName("item")
-    for (i=0; i<3; i=i+1) {
+    for (i=0; i<5; i=i+1) {
      items[i].style.background = BeveragesImages[i] 
      items[i].style.backgroundSize = '100% 100%'
   }
 }
-
 function Desserts() {
     heroic = document.getElementById("synonymous")
     heroic.innerHTML= ''
@@ -186,6 +198,18 @@ function Desserts() {
       items[i].style.background = DessertsImages[i]
       items[i].style.backgroundSize = '100% 100%'
     }
+}
+function Burgers() {
+heroic = document.getElementById("synonymous")
+heroic.innerHTML= ''
+heroic.innerHTML += BurgersDivs[0]
+heroic.innerHTML += BurgersDivs[1]
+heroic.innerHTML += BurgersDivs[2]
+items = document.getElementsByClassName("item")
+for (i=0; i<3; i=i+1) {
+   items[i].style.background = BurgersImages[i]  
+   items[i].style.backgroundSize = '100% 100%'
+ }
 }
 </script>
 
