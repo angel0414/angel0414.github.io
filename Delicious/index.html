@@ -55,6 +55,7 @@
           <h1 class="header-h">Nous brillons à travers</h1>
           <p class="header-p">" In France, cooking is a serious art form & a national sport ! " - Julia Child </p>
         </div>
+		<div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
           <div class="col-md-6 col-sm-6">
@@ -71,11 +72,45 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6">
-            <img src="http://www.cafeduparc.com/var/cafeduparc/storage/images/media/images/header-images/home-page-headers/cafeduparc_food_03/29031-1-eng-US/CafeDuParc_Food_03.jpg" alt="" class="img-responsive">
+          <div class="col-md-6 col-sm-6">   
+            <img src="http://www.cafeduparc.com/var/cafeduparc/storage/images/media/images/header-images/home-page-headers/cafeduparc_food_03/29031-1-eng-US/CafeDuParc_Food_03.jpg" alt="" class="img-responsive"onclick=clicked(0)>
+			<div class="item"></div>
+			
           </div>
         </div>
         <div class="col-md-1"></div>
+	</div>
+		<div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="col-md-6 col-sm-6">
+            <div class="about-info">
+              <h2 class="heading">We're hiring !</h2>
+              <p>Though our business is family orientated we offer jobs to any age from students to adults. During your interview we would love to view the following in you  :</p>
+              <div class="details-list">
+                <ul>
+                  <li><i class="fa fa-check"></i>Facial expressions and body gestures</li>
+                  <li><i class="fa fa-check"></i>Respect to the boss, co-workers</li>
+                  <li><i class="fa fa-check"></i>Skills in communication and customer loyalty</li>
+                  <li><i class="fa fa-check"></i>Good manners and a well rounded genuine person</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">   
+            <img src="https://www.kids-world-travel-guide.com/images/xfrench_food_macarons_shutterstock_62967172-2.jpg.pagespeed.ic.1_Cll_AGWX.jpg" alt="" class="img-responsive" onclick=clicked(1)>
+			<div class="item"></div>
+
+			
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+	</div>
+	
+	
+	
+
+
       </div>
     </div>
   </section>
@@ -102,12 +137,13 @@
 
           <div class="breakfast menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Bread & sweet spreads</a>
+              <a class="menu-title" onclick=clicked(2) data-meal-img="assets/img/restaurant/rib.jpg">Bread & sweet spreads</a>
               <span style="left: 166px; right: 44px;" class="menu"></span>
               <span class="menu-price">$2.75</span>
             </span>
             <span class="menu-subtitle">Boule de pain bread, fruit jam, & honey</span>
-          </div>
+			<div class="item"></div>
+			   </div>
 
           <div class="breakfast menu-restaurant">
             <span class="clearfix">
@@ -127,13 +163,15 @@
             <span class="menu-subtitle">Colorful fresh fruit given in a drizzle of a special sweet dressing</span>
           </div>
 
+          
           <div class="lunch menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Bouillabaisse</a>
+              <a class="menu-title" onclick=clicked(3) data-meal-img="assets/img/restaurant/rib.jpg">Bouillabaisse</a>
               <span style="left: 166px; right: 44px;" class="menu"></span>
               <span class="menu-price">$13.00</span>
             </span>
             <span class="menu-subtitle">Fish soup infused with saffron, orange, thyme, and chilli</span>
+			<div class="item"></div>
           </div>
 
           <div class="lunch menu-restaurant">
@@ -165,11 +203,12 @@
 
           <div class="dinner menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Coq au vin</a>
+              <a class="menu-title" onclick=clicked(4) data-meal-img="assets/img/restaurant/rib.jpg">Coq au vin</a>
               <span style="left: 166px; right: 44px;" class="menu"></span>
               <span class="menu-price">$20.99</span>
             </span>
             <span class="menu-subtitle">chicken braised with wine, mushrooms, salrty pork, or bacon</span>
+			<div class="item"></div>
           </div>
 
           <div class="dinner menu-restaurant">
@@ -233,6 +272,24 @@
   <script src="js/custom.js"></script>
   <script src="contactform/contactform.js"></script>
 
+			<script>
+				Descriptions_and_more=[
+					"* This medium rare steak is made from fresh cow cuts and sided with salad that will balance the saltiness of the dish. It's a must try and you won't regret it ! *",
+					"* A macaroon is a small biscuit/cookie, typically made from ground almonds, coconut, and/or other nuts or even potato, with sugar and sometimes flavorings, food coloring, glace cherries, jam, and/or a chocolate coating. Some recipes call for sweetened condensed milk . *",
+					"<img src='https://www.godairyfree.org/wp-content/uploads/2017/04/Bananas-Foster-Breakfast-Bread-vert-6.jpg' style='width:50%'>",
+					"<img src='https://cdn-image.foodandwine.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/200810-r-xl-bouillabaisse.jpg?itok=Tq_MH0JS' style='width:50%'>",
+					"<img src='https://cdn-image.myrecipes.com/sites/default/files/styles/medium_2x/public/coq-au-vin-sl.jpg?itok=8AaGqCae' style='width:50%'>",
+				]
+				items= document.getElementsByClassName("item")
+				function clicked(x){
+					if ( items[x].innerHTML=="")
+					{items[x].innerHTML= Descriptions_and_more[x]}
+					else {items[x].innerHTML=""}
+					/*/
+					alert("Macaroons are a sweet meringue-based confection made with egg white, icing sugar, granulated sugar, almond powder or ground almond, and food coloring.")/*/
+				}
+				</script>
+ 
 </body>
 
 </html>
